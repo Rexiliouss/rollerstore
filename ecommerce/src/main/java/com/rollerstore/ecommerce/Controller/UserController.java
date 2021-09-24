@@ -17,9 +17,14 @@ public class UserController {
     public UserController(UserService userService){
         this.userService=userService;
     }
-
+    //Get All Users
     @GetMapping("/{id}")
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return ResponseEntity.ok(userService.getAllUsers());
+    }
+    //Get User By ID
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> getUserById(long id){
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 }
