@@ -2,7 +2,6 @@ package com.rollerstore.ecommerce.Service;
 
 import com.rollerstore.ecommerce.Dto.UserDto;
 import com.rollerstore.ecommerce.Dto.UserDtoConverter;
-import com.rollerstore.ecommerce.Model.User;
 import com.rollerstore.ecommerce.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
