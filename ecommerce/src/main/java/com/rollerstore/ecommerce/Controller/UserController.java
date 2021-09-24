@@ -1,10 +1,14 @@
 package com.rollerstore.ecommerce.Controller;
 
-import com.rollerstore.ecommerce.Repository.UserRepository;
+import com.rollerstore.ecommerce.Service.UserService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/v1/user")
 public class UserController {
-    private UserRepository userRepository;
-    public UserController(UserRepository userRepository){
-        this.userRepository=userRepository;
+    private UserService userService;
+    public UserController(UserService userService){
+        this.userService=userService;
     }
 }
