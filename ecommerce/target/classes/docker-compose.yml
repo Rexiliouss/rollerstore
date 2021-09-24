@@ -1,0 +1,23 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ksnargup4a
+
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+        - node.name=es01
+        - cluster.name=es-docker-cluster
+        - discovery.seed_hosts=es02,es03
+        - cluster.initial_master_nodes=es01,es02,es03
+        - bootstrap.memory_lock=true
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
