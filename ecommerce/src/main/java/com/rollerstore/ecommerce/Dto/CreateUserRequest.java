@@ -1,12 +1,10 @@
 package com.rollerstore.ecommerce.Dto;
 
-import lombok.*;
+import com.rollerstore.ecommerce.Model.User;
+import lombok.Data;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserDto {
+@Data
+public class CreateUserRequest {
     private String userName;
     private String userMiddleName;
     private String userLastName;
