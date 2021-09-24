@@ -1,0 +1,18 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ksnargup4a
+
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      "discovery.type=single-node"
