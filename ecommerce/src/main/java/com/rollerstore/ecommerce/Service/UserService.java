@@ -32,7 +32,7 @@ public class UserService {
         return userDtoConverter.converter(user);
     }
 
-    public UserDto createUser(CreateUserRequest createUserRequest){
+    public UserDto createUser(CreateUserRequest createUserRequest){//Yeni Kullanıcı oluştur. ID'yi sürekli güncelletmemiz gerekecek. Bu kısma bakılacak.
         User user = new User(1,
                 createUserRequest.getUserName(),
                 createUserRequest.getUserMiddleName(),
@@ -41,7 +41,7 @@ public class UserService {
         return userDtoConverter.converter(userRepository.save(user));
     }
 
-    public UserDto updateUser(Long id, UpdateUserRequest updateUserRequest) {
+    public UserDto updateUser(Long id, UpdateUserRequest updateUserRequest) {//Kullanıcının önce ID'sini bul daha sonra yeni bir User nesnesiyle güncellenenleri configure et. Ardından kaydet.
         User user = findUserById(id);
         User updatedUser= new User(user.getId(),
                 user.getUserName(),
@@ -51,7 +51,7 @@ public class UserService {
         return userDtoConverter.converter(userRepository.save(updatedUser));
     }
 
-    private User findUserById(Long id){
+    private User findUserById(Long id){//Kullanıcı ID'sini Bul. Bulamazsan Exception Gönder
         return userRepository.findById(id).
                 orElseThrow(() -> new UserNotFoundException("Kullanıcı Bulunamadı: "+id));
     }
