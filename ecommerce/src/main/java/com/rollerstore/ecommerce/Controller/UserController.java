@@ -1,11 +1,11 @@
 package com.rollerstore.ecommerce.Controller;
 
+import com.rollerstore.ecommerce.Dto.CreateUserRequest;
+import com.rollerstore.ecommerce.Dto.UpdateUserRequest;
 import com.rollerstore.ecommerce.Dto.UserDto;
 import com.rollerstore.ecommerce.Service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +18,21 @@ public class UserController {
         this.userService=userService;
     }
     //Get All Users
-    @GetMapping("/{id}")
+    @GetMapping("/list")
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return ResponseEntity.ok(userService.getAllUsers());
     }
     //Get User By ID
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> getUserById(long id){
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long id){
         return ResponseEntity.ok(userService.getUserById(id));
+    }
+    @PostMapping
+    public ResponseEntity<UserDto> createUserRequest(@RequestBody CreateUserRequest createUserRequest){
+        return ResponseEntity.ok(userService.createUser(createUserRequest));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUserRequest(Long id,@RequestBody UpdateUserRequest updateUserRequest){
+        return ResponseEntity.ok(userService.updateUser(id,updateUserRequest));
     }
 }
